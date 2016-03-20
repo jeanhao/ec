@@ -1,0 +1,8 @@
+/target/
+.project
+.classpath
+.settings
+WebRoot/META-INF
+WebRoot/WEB-INF/lib
+WebRoot/resource/plugin
+WebRoot/resource/images
