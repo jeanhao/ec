@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ec.zeng.dao.Specs_amountMapper" >
+  <resultMap id="BaseResultMap" type="ec.zeng.model.Specs_amount" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="amount" property="amount" jdbcType="DOUBLE" />
+    <result column="prize" property="prize" jdbcType="DOUBLE" />
+    <result column="specs" property="specs" jdbcType="VARCHAR" />
+    <result column="product_id" property="productId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, amount, prize, specs, product_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_specs_amount
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_specs_amount
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="ec.zeng.model.Specs_amount" >
+    insert into t_specs_amount (id, amount, prize, 
+      specs, product_id)
+    values (#{id,jdbcType=INTEGER}, #{amount,jdbcType=DOUBLE}, #{prize,jdbcType=DOUBLE}, 
+      #{specs,jdbcType=VARCHAR}, #{productId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="ec.zeng.model.Specs_amount" >
+    insert into t_specs_amount
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="prize != null" >
+        prize,
+      </if>
+      <if test="specs != null" >
+        specs,
+      </if>
+      <if test="productId != null" >
+        product_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="prize != null" >
+        #{prize,jdbcType=DOUBLE},
+      </if>
+      <if test="specs != null" >
+        #{specs,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null" >
+        #{productId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="ec.zeng.model.Specs_amount" >
+    update t_specs_amount
+    <set >
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="prize != null" >
+        prize = #{prize,jdbcType=DOUBLE},
+      </if>
+      <if test="specs != null" >
+        specs = #{specs,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null" >
+        product_id = #{productId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="ec.zeng.model.Specs_amount" >
+    update t_specs_amount
+    set amount = #{amount,jdbcType=DOUBLE},
+      prize = #{prize,jdbcType=DOUBLE},
+      specs = #{specs,jdbcType=VARCHAR},
+      product_id = #{productId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

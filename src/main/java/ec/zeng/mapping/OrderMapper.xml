@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ec.zeng.dao.OrderMapper" >
+  <resultMap id="BaseResultMap" type="ec.zeng.model.Order" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="ifpay" property="ifpay" jdbcType="INTEGER" />
+    <result column="ifsent" property="ifsent" jdbcType="INTEGER" />
+    <result column="orderdatetime" property="orderdatetime" jdbcType="TIMESTAMP" />
+    <result column="postway" property="postway" jdbcType="VARCHAR" />
+    <result column="quantity" property="quantity" jdbcType="INTEGER" />
+    <result column="totalprice" property="totalprice" jdbcType="DOUBLE" />
+    <result column="product_id" property="productId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, ifpay, ifsent, orderdatetime, postway, quantity, totalprice, product_id, user_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="ec.zeng.model.Order" >
+    insert into t_order (id, ifpay, ifsent, 
+      orderdatetime, postway, quantity, 
+      totalprice, product_id, user_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{ifpay,jdbcType=INTEGER}, #{ifsent,jdbcType=INTEGER}, 
+      #{orderdatetime,jdbcType=TIMESTAMP}, #{postway,jdbcType=VARCHAR}, #{quantity,jdbcType=INTEGER}, 
+      #{totalprice,jdbcType=DOUBLE}, #{productId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="ec.zeng.model.Order" >
+    insert into t_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="ifpay != null" >
+        ifpay,
+      </if>
+      <if test="ifsent != null" >
+        ifsent,
+      </if>
+      <if test="orderdatetime != null" >
+        orderdatetime,
+      </if>
+      <if test="postway != null" >
+        postway,
+      </if>
+      <if test="quantity != null" >
+        quantity,
+      </if>
+      <if test="totalprice != null" >
+        totalprice,
+      </if>
+      <if test="productId != null" >
+        product_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="ifpay != null" >
+        #{ifpay,jdbcType=INTEGER},
+      </if>
+      <if test="ifsent != null" >
+        #{ifsent,jdbcType=INTEGER},
+      </if>
+      <if test="orderdatetime != null" >
+        #{orderdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="postway != null" >
+        #{postway,jdbcType=VARCHAR},
+      </if>
+      <if test="quantity != null" >
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="totalprice != null" >
+        #{totalprice,jdbcType=DOUBLE},
+      </if>
+      <if test="productId != null" >
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="ec.zeng.model.Order" >
+    update t_order
+    <set >
+      <if test="ifpay != null" >
+        ifpay = #{ifpay,jdbcType=INTEGER},
+      </if>
+      <if test="ifsent != null" >
+        ifsent = #{ifsent,jdbcType=INTEGER},
+      </if>
+      <if test="orderdatetime != null" >
+        orderdatetime = #{orderdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="postway != null" >
+        postway = #{postway,jdbcType=VARCHAR},
+      </if>
+      <if test="quantity != null" >
+        quantity = #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="totalprice != null" >
+        totalprice = #{totalprice,jdbcType=DOUBLE},
+      </if>
+      <if test="productId != null" >
+        product_id = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="ec.zeng.model.Order" >
+    update t_order
+    set ifpay = #{ifpay,jdbcType=INTEGER},
+      ifsent = #{ifsent,jdbcType=INTEGER},
+      orderdatetime = #{orderdatetime,jdbcType=TIMESTAMP},
+      postway = #{postway,jdbcType=VARCHAR},
+      quantity = #{quantity,jdbcType=INTEGER},
+      totalprice = #{totalprice,jdbcType=DOUBLE},
+      product_id = #{productId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

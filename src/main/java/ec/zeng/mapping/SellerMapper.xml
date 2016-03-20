@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ec.zeng.dao.SellerMapper" >
+  <resultMap id="BaseResultMap" type="ec.zeng.model.Seller" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="attendNum" property="attendnum" jdbcType="INTEGER" />
+    <result column="cWebsite" property="cwebsite" jdbcType="VARCHAR" />
+    <result column="detailInfo" property="detailinfo" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="fax" property="fax" jdbcType="VARCHAR" />
+    <result column="headImg" property="headimg" jdbcType="VARCHAR" />
+    <result column="identity" property="identity" jdbcType="VARCHAR" />
+    <result column="isAudit" property="isaudit" jdbcType="INTEGER" />
+    <result column="mainIndustry" property="mainindustry" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="phoneNum" property="phonenum" jdbcType="VARCHAR" />
+    <result column="postCode" property="postcode" jdbcType="VARCHAR" />
+    <result column="profile" property="profile" jdbcType="VARCHAR" />
+    <result column="regInfo" property="reginfo" jdbcType="VARCHAR" />
+    <result column="city_id" property="cityId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, address, attendNum, cWebsite, detailInfo, email, fax, headImg, identity, isAudit, 
+    mainIndustry, name, phoneNum, postCode, profile, regInfo, city_id, user_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_seller
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_seller
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="ec.zeng.model.Seller" >
+    insert into t_seller (id, address, attendNum, 
+      cWebsite, detailInfo, email, 
+      fax, headImg, identity, 
+      isAudit, mainIndustry, name, 
+      phoneNum, postCode, profile, 
+      regInfo, city_id, user_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, #{attendnum,jdbcType=INTEGER}, 
+      #{cwebsite,jdbcType=VARCHAR}, #{detailinfo,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{fax,jdbcType=VARCHAR}, #{headimg,jdbcType=VARCHAR}, #{identity,jdbcType=VARCHAR}, 
+      #{isaudit,jdbcType=INTEGER}, #{mainindustry,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{phonenum,jdbcType=VARCHAR}, #{postcode,jdbcType=VARCHAR}, #{profile,jdbcType=VARCHAR}, 
+      #{reginfo,jdbcType=VARCHAR}, #{cityId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="ec.zeng.model.Seller" >
+    insert into t_seller
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="attendnum != null" >
+        attendNum,
+      </if>
+      <if test="cwebsite != null" >
+        cWebsite,
+      </if>
+      <if test="detailinfo != null" >
+        detailInfo,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="fax != null" >
+        fax,
+      </if>
+      <if test="headimg != null" >
+        headImg,
+      </if>
+      <if test="identity != null" >
+        identity,
+      </if>
+      <if test="isaudit != null" >
+        isAudit,
+      </if>
+      <if test="mainindustry != null" >
+        mainIndustry,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="phonenum != null" >
+        phoneNum,
+      </if>
+      <if test="postcode != null" >
+        postCode,
+      </if>
+      <if test="profile != null" >
+        profile,
+      </if>
+      <if test="reginfo != null" >
+        regInfo,
+      </if>
+      <if test="cityId != null" >
+        city_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="attendnum != null" >
+        #{attendnum,jdbcType=INTEGER},
+      </if>
+      <if test="cwebsite != null" >
+        #{cwebsite,jdbcType=VARCHAR},
+      </if>
+      <if test="detailinfo != null" >
+        #{detailinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="headimg != null" >
+        #{headimg,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null" >
+        #{identity,jdbcType=VARCHAR},
+      </if>
+      <if test="isaudit != null" >
+        #{isaudit,jdbcType=INTEGER},
+      </if>
+      <if test="mainindustry != null" >
+        #{mainindustry,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenum != null" >
+        #{phonenum,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null" >
+        #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="profile != null" >
+        #{profile,jdbcType=VARCHAR},
+      </if>
+      <if test="reginfo != null" >
+        #{reginfo,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null" >
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="ec.zeng.model.Seller" >
+    update t_seller
+    <set >
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="attendnum != null" >
+        attendNum = #{attendnum,jdbcType=INTEGER},
+      </if>
+      <if test="cwebsite != null" >
+        cWebsite = #{cwebsite,jdbcType=VARCHAR},
+      </if>
+      <if test="detailinfo != null" >
+        detailInfo = #{detailinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        fax = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="headimg != null" >
+        headImg = #{headimg,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null" >
+        identity = #{identity,jdbcType=VARCHAR},
+      </if>
+      <if test="isaudit != null" >
+        isAudit = #{isaudit,jdbcType=INTEGER},
+      </if>
+      <if test="mainindustry != null" >
+        mainIndustry = #{mainindustry,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenum != null" >
+        phoneNum = #{phonenum,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null" >
+        postCode = #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="profile != null" >
+        profile = #{profile,jdbcType=VARCHAR},
+      </if>
+      <if test="reginfo != null" >
+        regInfo = #{reginfo,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null" >
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="ec.zeng.model.Seller" >
+    update t_seller
+    set address = #{address,jdbcType=VARCHAR},
+      attendNum = #{attendnum,jdbcType=INTEGER},
+      cWebsite = #{cwebsite,jdbcType=VARCHAR},
+      detailInfo = #{detailinfo,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      fax = #{fax,jdbcType=VARCHAR},
+      headImg = #{headimg,jdbcType=VARCHAR},
+      identity = #{identity,jdbcType=VARCHAR},
+      isAudit = #{isaudit,jdbcType=INTEGER},
+      mainIndustry = #{mainindustry,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      phoneNum = #{phonenum,jdbcType=VARCHAR},
+      postCode = #{postcode,jdbcType=VARCHAR},
+      profile = #{profile,jdbcType=VARCHAR},
+      regInfo = #{reginfo,jdbcType=VARCHAR},
+      city_id = #{cityId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

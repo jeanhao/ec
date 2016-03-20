@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ec.zeng.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="ec.zeng.model.User" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="date" property="date" jdbcType="TIMESTAMP" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="VARCHAR" />
+    <result column="headImg" property="headimg" jdbcType="VARCHAR" />
+    <result column="isEmailActived" property="isemailactived" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="secAnswer1" property="secanswer1" jdbcType="VARCHAR" />
+    <result column="secAnswer2" property="secanswer2" jdbcType="VARCHAR" />
+    <result column="secQuestion1" property="secquestion1" jdbcType="VARCHAR" />
+    <result column="secQuestion2" property="secquestion2" jdbcType="VARCHAR" />
+    <result column="userName" property="username" jdbcType="VARCHAR" />
+    <result column="userType" property="usertype" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, date, email, gender, headImg, isEmailActived, name, password, secAnswer1, secAnswer2, 
+    secQuestion1, secQuestion2, userName, userType
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="ec.zeng.model.User" >
+    insert into t_user (id, date, email, 
+      gender, headImg, isEmailActived, 
+      name, password, secAnswer1, 
+      secAnswer2, secQuestion1, secQuestion2, 
+      userName, userType)
+    values (#{id,jdbcType=INTEGER}, #{date,jdbcType=TIMESTAMP}, #{email,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=VARCHAR}, #{headimg,jdbcType=VARCHAR}, #{isemailactived,jdbcType=INTEGER}, 
+      #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{secanswer1,jdbcType=VARCHAR}, 
+      #{secanswer2,jdbcType=VARCHAR}, #{secquestion1,jdbcType=VARCHAR}, #{secquestion2,jdbcType=VARCHAR}, 
+      #{username,jdbcType=VARCHAR}, #{usertype,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="ec.zeng.model.User" >
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="headimg != null" >
+        headImg,
+      </if>
+      <if test="isemailactived != null" >
+        isEmailActived,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="secanswer1 != null" >
+        secAnswer1,
+      </if>
+      <if test="secanswer2 != null" >
+        secAnswer2,
+      </if>
+      <if test="secquestion1 != null" >
+        secQuestion1,
+      </if>
+      <if test="secquestion2 != null" >
+        secQuestion2,
+      </if>
+      <if test="username != null" >
+        userName,
+      </if>
+      <if test="usertype != null" >
+        userType,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="headimg != null" >
+        #{headimg,jdbcType=VARCHAR},
+      </if>
+      <if test="isemailactived != null" >
+        #{isemailactived,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="secanswer1 != null" >
+        #{secanswer1,jdbcType=VARCHAR},
+      </if>
+      <if test="secanswer2 != null" >
+        #{secanswer2,jdbcType=VARCHAR},
+      </if>
+      <if test="secquestion1 != null" >
+        #{secquestion1,jdbcType=VARCHAR},
+      </if>
+      <if test="secquestion2 != null" >
+        #{secquestion2,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="usertype != null" >
+        #{usertype,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="ec.zeng.model.User" >
+    update t_user
+    <set >
+      <if test="date != null" >
+        date = #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="headimg != null" >
+        headImg = #{headimg,jdbcType=VARCHAR},
+      </if>
+      <if test="isemailactived != null" >
+        isEmailActived = #{isemailactived,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="secanswer1 != null" >
+        secAnswer1 = #{secanswer1,jdbcType=VARCHAR},
+      </if>
+      <if test="secanswer2 != null" >
+        secAnswer2 = #{secanswer2,jdbcType=VARCHAR},
+      </if>
+      <if test="secquestion1 != null" >
+        secQuestion1 = #{secquestion1,jdbcType=VARCHAR},
+      </if>
+      <if test="secquestion2 != null" >
+        secQuestion2 = #{secquestion2,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="usertype != null" >
+        userType = #{usertype,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="ec.zeng.model.User" >
+    update t_user
+    set date = #{date,jdbcType=TIMESTAMP},
+      email = #{email,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      headImg = #{headimg,jdbcType=VARCHAR},
+      isEmailActived = #{isemailactived,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      secAnswer1 = #{secanswer1,jdbcType=VARCHAR},
+      secAnswer2 = #{secanswer2,jdbcType=VARCHAR},
+      secQuestion1 = #{secquestion1,jdbcType=VARCHAR},
+      secQuestion2 = #{secquestion2,jdbcType=VARCHAR},
+      userName = #{username,jdbcType=VARCHAR},
+      userType = #{usertype,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
